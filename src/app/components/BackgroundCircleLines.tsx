@@ -64,7 +64,7 @@ export default function CircleLinesSVG() {
                     clipPath="url(#rightHalfClip)"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 0.6 }}
-                    transition={{ duration: 2, delay: 0.5 }}
+                    transition={{ duration: 1.5, delay: 2.5 }}
                 />
 
                 {/* Large outer circle - main container */}
