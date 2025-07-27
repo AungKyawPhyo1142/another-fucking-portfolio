@@ -1,5 +1,56 @@
 @import "tailwindcss";
 
+/* Custom Font Faces */
+@font-face {
+  font-family: 'Alien';
+  src: url('/fonts/alien.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HK Nova Light';
+  src: url('/fonts/hk-nova-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Thin';
+  src: url('/fonts/noto-thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Thin Italic';
+  src: url('/fonts/noto-thin-italic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Custom Font Utility Classes */
+.font-alien {
+  font-family: 'Alien', sans-serif;
+}
+
+.font-hk-nova-light {
+  font-family: 'HK Nova Light', sans-serif;
+}
+
+.font-noto-thin {
+  font-family: 'Noto Thin', sans-serif;
+}
+
+.font-noto-thin-italic {
+  font-family: 'Noto Thin Italic', sans-serif;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
