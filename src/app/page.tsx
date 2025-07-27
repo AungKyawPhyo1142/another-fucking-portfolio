@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import MouseFollower from './components/MouseFollower';
 import LoadingScreen from './components/LoadingScreen';
 import CircleLinesSVG from './components/BackgroundCircleLines';
@@ -65,19 +65,33 @@ export default function Home() {
           {/* Hero Section */}
           <section id='hero' className="relative h-screen overflow-hidden">
             {/* Hero Content */}
-            <div className="relative  z-10 flex items-center justify-center h-full flex-col gap-y-5">
-              <p className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[30%]'>
+            <div className="relative z-10 flex items-center justify-center h-full flex-col gap-y-5">
+              <motion.p
+                className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[30%] text-white'
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 4.8 }}
+              >
                 [FullStack Web Development]
-              </p>
+              </motion.p>
 
-              <p className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[60%]'>
+              <motion.p
+                className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[60%] text-white'
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 5.0 }}
+              >
                 [Mentorship]
-              </p>
-              <p className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[25%] right-[5%] w-[300px]'>
+              </motion.p>
+
+              <motion.p
+                className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[25%] right-[5%] w-[300px] text-white'
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 5.2 }}
+              >
                 I craft digital experiences that blend logic and intuition. building with purpose across design, code, systems, and storytelling to create real impact.
-              </p>
-
-
+              </motion.p>
             </div>
           </section>
 
