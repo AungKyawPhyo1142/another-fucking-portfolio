@@ -137,3 +137,14 @@ body::-webkit-scrollbar {
   display: none;
   /* Safari and Chrome */
 }
+
+/* Custom text selection styling */
+::selection {
+  background-color: white;
+  color: black;
+}
+
+::-moz-selection {
+  background-color: white;
+  color: black;
+}

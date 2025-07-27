@@ -1,8 +1,26 @@
 "use client"
 
-import { motion } from "motion/react"
+import { motion, useTransform, useScroll } from "motion/react"
 
 export default function CircleLinesSVG() {
+    const { scrollYProgress } = useScroll()
+
+    // Transform values based on scroll progress - only fade out other circles
+    const circleScale = useTransform(scrollYProgress, [0, 1], [1, 0.3])
+    const circleOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0.2])
+    const lineOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [1, 0.3, 0])
+
+    // Position transforms to move circles toward center
+    const leftCircleX = useTransform(scrollYProgress, [0, 1], [300, 450])
+    const rightCircleX = useTransform(scrollYProgress, [0, 1], [900, 750])
+    const topLeftX = useTransform(scrollYProgress, [0, 1], [200, 400])
+    const topLeftY = useTransform(scrollYProgress, [0, 1], [200, 300])
+    const topRightX = useTransform(scrollYProgress, [0, 1], [1000, 800])
+    const topRightY = useTransform(scrollYProgress, [0, 1], [200, 300])
+    const bottomLeftX = useTransform(scrollYProgress, [0, 1], [200, 400])
+    const bottomLeftY = useTransform(scrollYProgress, [0, 1], [600, 500])
+    const bottomRightX = useTransform(scrollYProgress, [0, 1], [1000, 800])
+    const bottomRightY = useTransform(scrollYProgress, [0, 1], [600, 500])
     return (
         <div className="w-full h-screen bg-black flex items-center justify-center overflow-hidden">
             <svg
@@ -17,16 +35,24 @@ export default function CircleLinesSVG() {
                     <clipPath id="rightHalfClip">
                         <rect x="600" y="50" width="350" height="700" />
                     </clipPath>
-                    <pattern id="purpleGradientPattern" patternUnits="userSpaceOnUse" width="700" height="700">
-                        <image
-                            href="/images/purple-gradient.jpg"
-                            x="0"
-                            y="0"
-                            width="700"
-                            height="700"
+                    <pattern id="purpleGradientPattern" patternUnits="userSpaceOnUse" width="700" height="700" x="250" y="50">
+                        <motion.image
+                            href="/images/gradient-three.jpg"
+                            x="-100"
+                            y="-100"
+                            width="900"
+                            height="900"
                             preserveAspectRatio="xMidYMid slice"
+                            animate={{ rotate: 360 }}
+                            transition={{
+                                duration: 60,
+                                repeat: Infinity,
+                                ease: "linear",
+                            }}
                         />
                     </pattern>
+
+
                 </defs>
 
                 {/* Background image circle - right half only */}
@@ -57,80 +83,104 @@ export default function CircleLinesSVG() {
 
                 {/* Large circle - left side */}
                 <motion.circle
-                    cx="300"
+                    cx={leftCircleX}
                     cy="400"
                     r="280"
                     fill="none"
-                    stroke="rgba(255,255,255,0.25)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 2, delay: 0.8 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Large circle - right side */}
                 <motion.circle
-                    cx="900"
+                    cx={rightCircleX}
                     cy="400"
                     r="280"
                     fill="none"
-                    stroke="rgba(255,255,255,0.25)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 2, delay: 1.0 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Medium circle - top left */}
                 <motion.circle
-                    cx="200"
-                    cy="200"
+                    cx={topLeftX}
+                    cy={topLeftY}
                     r="180"
                     fill="none"
-                    stroke="rgba(255,255,255,0.2)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 1.2 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Medium circle - top right */}
                 <motion.circle
-                    cx="1000"
-                    cy="200"
+                    cx={topRightX}
+                    cy={topRightY}
                     r="180"
                     fill="none"
-                    stroke="rgba(255,255,255,0.2)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 1.4 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Medium circle - bottom left */}
                 <motion.circle
-                    cx="200"
-                    cy="600"
+                    cx={bottomLeftX}
+                    cy={bottomLeftY}
                     r="180"
                     fill="none"
-                    stroke="rgba(255,255,255,0.2)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 1.6 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Medium circle - bottom right */}
                 <motion.circle
-                    cx="1000"
-                    cy="600"
+                    cx={bottomRightX}
+                    cy={bottomRightY}
                     r="180"
                     fill="none"
-                    stroke="rgba(255,255,255,0.2)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 1.8 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Central circle - medium size */}
@@ -139,7 +189,7 @@ export default function CircleLinesSVG() {
                     cy="400"
                     r="150"
                     fill="none"
-                    stroke="rgba(255,255,255,0.4)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
@@ -157,6 +207,10 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1, delay: 2.2 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 <motion.circle
@@ -169,6 +223,10 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1, delay: 2.4 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 <motion.circle
@@ -176,11 +234,15 @@ export default function CircleLinesSVG() {
                     cy="500"
                     r="80"
                     fill="none"
-                    stroke="rgba(255,255,255,0.15)"
+                    stroke="rgba(255,255,255,0.1)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1, delay: 2.6 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 <motion.circle
@@ -193,6 +255,10 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1, delay: 2.8 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Connecting lines - horizontal */}
@@ -206,6 +272,7 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 3.0 }}
+                    style={{ opacity: lineOpacity }}
                 />
 
                 {/* Connecting lines - vertical */}
@@ -219,6 +286,7 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 3.2 }}
+                    style={{ opacity: lineOpacity }}
                 />
 
                 {/* Diagonal connecting lines */}
@@ -232,6 +300,7 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 3.4 }}
+                    style={{ opacity: lineOpacity }}
                 />
 
                 <motion.line
@@ -244,6 +313,7 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.5, delay: 3.6 }}
+                    style={{ opacity: lineOpacity }}
                 />
 
                 {/* Additional intersecting circles for complexity */}
@@ -257,6 +327,10 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 3.8 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 <motion.circle
@@ -269,6 +343,10 @@ export default function CircleLinesSVG() {
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 4.0 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 {/* Small accent circles */}
@@ -277,11 +355,15 @@ export default function CircleLinesSVG() {
                     cy="350"
                     r="40"
                     fill="none"
-                    stroke="rgba(255,255,255,0.3)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 4.2 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
 
                 <motion.circle
@@ -289,11 +371,15 @@ export default function CircleLinesSVG() {
                     cy="450"
                     r="40"
                     fill="none"
-                    stroke="rgba(255,255,255,0.3)"
+                    stroke="rgba(255,255,255,0.15)"
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 4.4 }}
+                    style={{
+                        scale: circleScale,
+                        opacity: circleOpacity
+                    }}
                 />
             </svg>
         </div>

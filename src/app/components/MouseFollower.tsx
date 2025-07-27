@@ -22,6 +22,7 @@ export default function MouseFollower({
     const mouseY = useMotionValue(0);
     const [displayText, setDisplayText] = useState('+');
     const [isScrambling, setIsScrambling] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
 
     // Create smooth spring animations for the circle position
     const springX = useSpring(mouseX, { stiffness, damping });
@@ -69,6 +70,7 @@ export default function MouseFollower({
         const hoverTextMap: { [key: string]: string } = {
             'aungkyaw': '[index]',
             'menu': '[open]',
+            'scrollBack': '[top]'
         };
 
         const handleMouseEnter = (e: Event) => {
@@ -76,11 +78,13 @@ export default function MouseFollower({
             const dataName = target.getAttribute('data-name');
 
             if (dataName && hoverTextMap[dataName]) {
+                setIsHovering(true);
                 scrambleText(hoverTextMap[dataName]);
             }
         };
 
         const handleMouseLeave = (e: Event) => {
+            setIsHovering(false);
             scrambleText('+');
         };
 
@@ -112,8 +116,14 @@ export default function MouseFollower({
                 y: springY,
             }}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
+            animate={{
+                opacity: 1,
+                scale: isHovering ? 1.2 : 1
+            }}
+            transition={{
+                duration: 0.3,
+                scale: { duration: 0.2, ease: "easeOut" }
+            }}
         >
             <span className="text-white text-xs font-hk-nova-light select-none">
                 {displayText}
