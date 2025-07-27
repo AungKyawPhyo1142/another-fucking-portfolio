@@ -122,41 +122,41 @@ export default function LoadingScreen({ onComplete, duration = 3000 }: LoadingSc
 
                     {/* Four starting points */}
                     {/* <motion.circle
-            cx="100"
-            cy="20"
-            r="6"
-            fill="white"
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{ scale: 0, opacity: 0 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
-          />
-          <motion.circle
-            cx="180"
-            cy="100"
-            r="6"
-            fill="white"
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{ scale: 0, opacity: 0 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
-          />
-          <motion.circle
-            cx="100"
-            cy="180"
-            r="6"
-            fill="white"
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{ scale: 0, opacity: 0 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
-          />
-          <motion.circle
-            cx="20"
-            cy="100"
-            r="6"
-            fill="white"
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{ scale: 0, opacity: 0 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
-          /> */}
+                        cx="100"
+                        cy="20"
+                        r="2"
+                        fill="white"
+                        initial={{ scale: 1, opacity: 1 }}
+                        animate={{ scale: 0, opacity: 0 }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                    />
+                    <motion.circle
+                        cx="180"
+                        cy="100"
+                        r="2"
+                        fill="white"
+                        initial={{ scale: 1, opacity: 1 }}
+                        animate={{ scale: 0, opacity: 0 }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                    />
+                    <motion.circle
+                        cx="100"
+                        cy="180"
+                        r="2"
+                        fill="white"
+                        initial={{ scale: 1, opacity: 1 }}
+                        animate={{ scale: 0, opacity: 0 }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                    />
+                    <motion.circle
+                        cx="20"
+                        cy="100"
+                        r="2"
+                        fill="white"
+                        initial={{ scale: 1, opacity: 1 }}
+                        animate={{ scale: 0, opacity: 0 }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                    /> */}
                 </svg>
 
                 {/* Purple Gradient Background Image */}

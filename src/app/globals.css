@@ -50,6 +50,31 @@
   font-family: 'Noto Thin Italic', sans-serif;
 }
 
+.general-transition {
+  transition: all 0.7s ease-in;
+}
+
+/* Smooth underline hover animation */
+.hover-underline {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease-out;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
 
 :root {
   --background: #ffffff;
@@ -74,4 +99,41 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide scrollbar for all browsers while keeping scroll functionality */
+* {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+
+html {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
