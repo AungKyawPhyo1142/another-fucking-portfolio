@@ -5,6 +5,9 @@ import { motion, useTransform, useScroll } from "motion/react"
 export default function CircleLinesSVG() {
     const { scrollYProgress } = useScroll()
 
+    // Fade out the entire background when reaching third section
+    const backgroundOpacity = useTransform(scrollYProgress, [0, 0.6, 0.7], [1, 1, 0])
+
     // Transform values based on scroll progress - only fade out other circles
     const circleScale = useTransform(scrollYProgress, [0, 1], [1, 0.3])
     const circleOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0.2])
@@ -22,7 +25,10 @@ export default function CircleLinesSVG() {
     const bottomRightX = useTransform(scrollYProgress, [0, 1], [1000, 800])
     const bottomRightY = useTransform(scrollYProgress, [0, 1], [600, 500])
     return (
-        <div className="w-full h-screen bg-black flex items-center justify-center overflow-hidden">
+        <motion.div
+            className="w-full h-screen bg-black flex items-center justify-center overflow-hidden"
+            style={{ opacity: backgroundOpacity }}
+        >
             <svg
                 width="1200"
                 height="800"
@@ -382,6 +388,6 @@ export default function CircleLinesSVG() {
                     }}
                 />
             </svg>
-        </div>
+        </motion.div>
     )
 }

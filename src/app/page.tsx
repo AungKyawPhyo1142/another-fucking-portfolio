@@ -5,8 +5,8 @@ import { AnimatePresence, motion } from 'motion/react';
 import MouseFollower from './components/MouseFollower';
 import LoadingScreen from './components/LoadingScreen';
 import CircleLinesSVG from './components/BackgroundCircleLines';
+import ThirdSectionBackground from './components/ThirdSectionBackground';
 import Lenis from 'lenis';
-import Link from 'next/link';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -54,52 +54,61 @@ export default function Home() {
           </nav>
 
 
-
-          {/* Fixed Background Circle Lines */}
-          <div className="fixed inset-0 z-0">
+          {/* Fixed Backgrounds */}
+          <div className="fixed top-0 left-0 w-full h-full inset-0 z-0">
+            {/* Circle Lines Background - Shows for first two sections */}
             <CircleLinesSVG />
+            
+            {/* Third Section Background - Shows for third section */}
+            <ThirdSectionBackground />
           </div>
 
-
-
-          {/* Hero Section */}
-          <section id='hero' className="relative h-screen overflow-hidden">
-            {/* Hero Content */}
-            <div className="relative z-10 flex items-center justify-center h-full flex-col gap-y-5">
-              <motion.p
-                className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[30%] text-white'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 4.8 }}
-              >
-                [FullStack Web Development]
-              </motion.p>
-
-              <motion.p
-                className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[60%] text-white'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 5.0 }}
-              >
-                [Mentorship]
-              </motion.p>
-
-              <motion.p
-                className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[25%] right-[5%] w-[300px] text-white'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 5.2 }}
-              >
-                I craft digital experiences that blend logic and intuition. building with purpose across design, code, systems, and storytelling to create real impact.
-              </motion.p>
-            </div>
-          </section>
-
-          {/* Additional Content Sections for Scrolling */}
-
+          {/* Content Sections */}
           <div className='relative'>
-            <section className="h-screen bg-blue-200/20 flex items-center justify-center">
-              <div className="text-center text-white">
+            {/* Hero Section */}
+            <section id='hero' className="relative h-screen overflow-hidden">
+              {/* Hero Content */}
+              <div className="relative z-10 flex items-center justify-center h-full flex-col gap-y-5">
+                <motion.p
+                  className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[30%] text-white'
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 4.8 }}
+                >
+                  [FullStack Web Development]
+                </motion.p>
+
+                <motion.p
+                  className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[48%] left-[60%] text-white'
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 5.0 }}
+                >
+                  [Mentorship]
+                </motion.p>
+
+                <motion.p
+                  className='uppercase tracking-wider font-hk-nova-light text-xs absolute top-[25%] right-[5%] w-[300px] text-white'
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 5.2 }}
+                >
+                  I craft digital experiences that blend logic and intuition. building with purpose across design, code, systems, and storytelling to create real impact.
+                </motion.p>
+                <motion.div
+                  className='uppercase tracking-wider font-hk-nova-light text-3xl absolute bottom-[10%] left-[5%] w-[700px] text-white'
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 5.4 }}
+                >
+                  Full-Stack Engineer with <span className='font-noto-thin-italic font-bold hover-underline'>3+ years of experience</span> building web apps using React, TypeScript, Node.js, and modern backend tools.
+                </motion.div>
+              </div>
+            </section>
+
+            {/* Second Section - About */}
+            <section className="relative h-screen flex items-center justify-center">
+              <div className="text-center text-white relative z-10">
                 <h2 className="text-6xl font-alien mb-8">About</h2>
                 <p className="text-xl font-hk-nova-light max-w-2xl">
                   Scroll to see the circle animation transform as you move through the content.
@@ -107,20 +116,12 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="h-screen bg-purple-200/20 flex items-center justify-center">
-              <div className="text-center text-white">
-                <h2 className="text-6xl font-alien mb-8">Work</h2>
+            {/* Third Section - Different Background */}
+            <section className="relative h-screen flex items-center justify-center">
+              <div className="text-center text-white relative z-10">
+                <h2 className="text-6xl font-alien mb-8">Projects</h2>
                 <p className="text-xl font-hk-nova-light max-w-2xl">
-                  The circles will group together and form a unified design around the center.
-                </p>
-              </div>
-            </section>
-
-            <section className="h-screen bg-red-200/20 flex items-center justify-center">
-              <div className="text-center text-white">
-                <h2 className="text-6xl font-alien mb-8">Contact</h2>
-                <p className="text-xl font-hk-nova-light max-w-2xl">
-                  Watch as the animation completes and creates a cohesive circular pattern.
+                  This section has a different background that fades in smoothly.
                 </p>
               </div>
             </section>
